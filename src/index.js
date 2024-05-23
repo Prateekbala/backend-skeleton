@@ -1,9 +1,16 @@
 import express from "express";
-import connectDB from "../DB/index.js"; 
-const app = express();
+import dotenv from "dotenv"
+import {app} from './app.js'
+import {registerUser} from "../controllers/user.controller.js"
 
-app.listen(8000, () => {
-    console.log('App is listening on port 8000');
+dotenv.config({
+    path: './env'
+})
+import connectDB from "../DB/index.js"; 
+const server = express();
+
+server.listen(process.env.PORT, () => {
+    console.log(`App is listening on port http://localhost:${process.env.PORT}`);
 });
 
 connectDB(); 
